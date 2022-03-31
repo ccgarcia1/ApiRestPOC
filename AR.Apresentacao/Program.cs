@@ -14,7 +14,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 
 builder.Services.AddDbContext<ContextoPrincipal>(options =>
 options.UseSqlServer(builder.Configuration.GetConnectionString("ApiRestConnectionString")));
