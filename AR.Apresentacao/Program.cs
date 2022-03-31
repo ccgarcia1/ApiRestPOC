@@ -1,3 +1,10 @@
+using AR.Data;
+using AR.Data.Imp;
+using AR.Data.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System.Configuration;
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,7 +14,14 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.AddSingleton<IClienteRepository, ClienteRepository>();
+
+builder.Services.AddDbContext<ContextoPrincipal>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("ApiRestConnectionString")));
+
+
 var app = builder.Build();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

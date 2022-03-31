@@ -2,6 +2,7 @@
 
 namespace AR.Domain
 {
+    //[Table("Cliente")]
     public class Cliente
     {
         [Key]
